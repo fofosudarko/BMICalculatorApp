@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 const Toolbar = props => (
   <View style={styles.toolbar}>
-    <Text style={styles.title}>Title</Text>
+    <Text style={styles.title}>BMI</Text>
   </View>
 );
 
@@ -17,7 +17,10 @@ const styles = StyleSheet.create({
   title: {
     flex: 1,
     width: '40%',
-    height: '100%'
+    height: '100%',
+    color: 'white',
+    fontSize: 40,
+    textAlign: 'justify'
   }
 });
 
