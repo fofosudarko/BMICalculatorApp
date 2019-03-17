@@ -1,7 +1,7 @@
 // services.js
 
 const calculateBMI = (weight = 1, height = 1) => {
-  return (weight / Math.pow(height, 2)).toFixed(4);
+  return (weight / Math.pow(height, 2)).toFixed(3);
 };
 
 const getHealthStatus = bmi => {
