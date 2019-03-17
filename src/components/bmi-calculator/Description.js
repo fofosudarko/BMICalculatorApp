@@ -9,7 +9,6 @@ const Description = props => (
 
 const styles = StyleSheet.create({
   description: {
-    flex: 1,
     width: '100%',
     height: '10%',
     padding: 10
