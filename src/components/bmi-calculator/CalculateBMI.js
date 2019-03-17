@@ -1,34 +1,63 @@
 import React, { Component } from 'react';
-import { View, Alert, TextInput, Button, StyleSheet } from 'react-native';
+import {
+  View,
+  TextInput,
+  Button,
+  StyleSheet,
+  Keyboard,
+  Alert
+} from 'react-native';
+
+import BMIService from 'app/src/services/services';
 
 class CalculateBMI extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       weight: null,
       height: null
     };
 
-    this.weightPlaceholder = 'Enter your weight';
-    this.heightPlaceholder = 'Enter your height';
+    this.weightPlaceholder = 'Enter your weight in kilograms';
+    this.heightPlaceholder = 'Enter your height in metres';
   }
 
-  onWeightInput = weight => {
+  handleWeightInput = weight => {
     this.setState({ weight });
   };
 
-  onHeightInput = height => {
+  handleHeightInput = height => {
     this.setState({ height });
   };
 
-  onGetBMI = () => {
-    let { height, weight } = this.state;
-    let alertMessage = `
-      Your height: ${height},
-      Your weight: ${weight}
-    `;
+  handleGetBMI = () => {
+    let { weight, height } = this.state;
 
-    Alert.alert('BMI', alertMessage);
+    if (!weight) {
+      return Alert.alert('BMI', 'No weight entered!');
+    }
+
+    if (!height) {
+      return Alert.alert('BMI', 'No height entered!');
+    }
+
+    let bmi = BMIService.calculateBMI(weight, height);
+
+    Keyboard.dismiss();
+
+    this.props.onGetBMI(bmi);
+  };
+
+  handleReset = () => {
+    this.setState({
+      weight: null,
+      height: null
+    });
+
+    Keyboard.dismiss();
+
+    this.props.onGetBMI(null);
   };
 
   render() {
@@ -36,16 +65,21 @@ class CalculateBMI extends Component {
       <View style={styles.calculator}>
         <View style={styles.formContainer}>
           <TextInput
-            style={styles.weight}
-            onChangeText={this.onWeightInput}
+            style={styles.metric}
             placeholder={this.weightPlaceholder}
+            value={this.state.weight}
+            keyboardType="decimal-pad"
+            onChangeText={this.handleWeightInput}
           />
           <TextInput
-            style={styles.height}
-            onChangeText={this.onHeightInput}
+            style={styles.metric}
             placeholder={this.heightPlaceholder}
+            value={this.state.height}
+            keyboardType="decimal-pad"
+            onChangeText={this.handleHeightInput}
           />
-          <Button title="Get BMI" color="green" onPress={this.onGetBMI} />
+          <Button title="Get BMI" color="green" onPress={this.handleGetBMI} />
+          <Button title="Discard" color="red" onPress={this.handleReset} />
         </View>
       </View>
     );
@@ -54,26 +88,20 @@ class CalculateBMI extends Component {
 
 const styles = StyleSheet.create({
   calculator: {
-    flex: 1,
     width: '100%',
-    height: '45%',
-    justifyContent: 'center',
+    height: '40%',
     padding: 20
   },
   formContainer: {
-    flex: 1,
-    height: '60%',
+    height: '100%',
     justifyContent: 'space-between'
   },
-  weight: {
+  metric: {
     height: 40,
-    borderColor: 'gray',
-    borderWidth: 1
-  },
-  height: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1
+    borderColor: 'green',
+    borderWidth: 1,
+    color: 'green',
+    fontSize: 20
   },
   submitContainer: {
     flex: 3,
