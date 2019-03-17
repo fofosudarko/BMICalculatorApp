@@ -101,7 +101,8 @@ const styles = StyleSheet.create({
     borderColor: 'green',
     borderWidth: 1,
     color: 'green',
-    fontSize: 20
+    fontSize: 20,
+    paddingLeft: 10
   }
 });
 
