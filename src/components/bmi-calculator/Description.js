@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 const Description = props => (
   <View style={styles.description}>
-    <Text>Description</Text>
+    <Text style={styles.text}>BMI Calculator App</Text>
   </View>
 );
 
@@ -13,6 +13,11 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '10%',
     padding: 10
+  },
+  text: {
+    color: 'green',
+    textAlign: 'center',
+    fontSize: 30
   }
 });
 
