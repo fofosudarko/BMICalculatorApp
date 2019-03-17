@@ -102,12 +102,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     color: 'green',
     fontSize: 20
-  },
-  submitContainer: {
-    flex: 3,
-    height: '30%'
-  },
-  submit: {}
+  }
 });
 
 export default CalculateBMI;
