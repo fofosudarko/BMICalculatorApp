@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { Component } from "react";
+import { View, Text, StyleSheet } from "react-native";
 
-import BMIService from 'app/src/services/services';
+import BMIService from "app/src/services/services";
 
 class DisplayBMI extends Component {
   constructor(props) {
@@ -21,8 +21,8 @@ class DisplayBMI extends Component {
 
 const Placeholder = props => {
   const style = {
-    backgroundColor: 'snow',
-    borderColor: 'green'
+    backgroundColor: "snow",
+    borderColor: "green"
   };
 
   const placeholderStyle = StyleSheet.flatten([styles.innerDisplay, style]);
@@ -54,22 +54,22 @@ const getHealthStatusStyle = healthStatus => {
   let style = {};
 
   switch (healthStatus) {
-    case 'overweight':
+    case "overweight":
       style = {
-        borderColor: 'midnightblue',
-        backgroundColor: 'midnightblue'
+        borderColor: "black",
+        backgroundColor: "black"
       };
       break;
-    case 'underweight':
+    case "underweight":
       style = {
-        borderColor: 'red',
-        backgroundColor: 'red'
+        borderColor: "red",
+        backgroundColor: "red"
       };
       break;
-    case 'healthy':
+    case "healthy":
       style = {
-        borderColor: 'green',
-        backgroundColor: 'green'
+        borderColor: "green",
+        backgroundColor: "green"
       };
       break;
   }
@@ -79,27 +79,27 @@ const getHealthStatusStyle = healthStatus => {
 
 const styles = StyleSheet.create({
   displayContainer: {
-    width: '100%',
-    height: '50%',
+    width: "100%",
+    height: "50%",
     padding: 20
   },
   innerDisplay: {
     borderWidth: 3,
     borderRadius: 10,
-    height: '100%',
-    width: '100%',
+    height: "100%",
+    width: "100%",
     padding: 20,
-    justifyContent: 'space-around'
+    justifyContent: "space-around"
   },
   placeholder: {
     fontSize: 70,
-    textAlign: 'center',
-    color: 'green'
+    textAlign: "center",
+    color: "green"
   },
   display: {
     fontSize: 50,
-    textAlign: 'center',
-    color: 'white'
+    textAlign: "center",
+    color: "white"
   }
 });
 
